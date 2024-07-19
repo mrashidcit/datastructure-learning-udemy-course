@@ -1,6 +1,8 @@
 package adjacencyList;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Stack;
 
 public class Graph {
     ArrayList<GraphNode> nodeList = new ArrayList<>();
@@ -32,4 +34,80 @@ public class Graph {
         }
         return s.toString();
     }
+
+    // BFS internall
+    private void bfsVisit(GraphNode node) {
+        LinkedList<GraphNode> queue = new LinkedList<GraphNode>();
+        queue.add(node);
+        while (!queue.isEmpty()) {
+            GraphNode currentNode = queue.remove(0);
+            currentNode.isVisited = true;
+            System.out.print(currentNode.name + " ");
+            for (GraphNode neighbor : currentNode.neighbors) {
+                if (!neighbor.isVisited) {
+                    queue.add(neighbor);
+                    neighbor.isVisited = true;
+                }
+            }
+        }
+    }
+
+    void bfs() {
+        for (GraphNode node: nodeList) {
+            if (!node.isVisited)
+                bfsVisit(node);
+        }
+    }
+
+    private void dfsVisit(GraphNode node) {
+        Stack<GraphNode> stack = new Stack<>();
+        stack.push(node);
+        while (!stack.isEmpty()) {
+            GraphNode currentNode = stack.pop();
+            currentNode.isVisited = true;
+            System.out.print(currentNode.name + " ");
+            for (GraphNode neighbor: currentNode.neighbors) {
+                if (!neighbor.isVisited) {
+                    stack.push(neighbor);
+                    neighbor.isVisited = true;
+                }
+            }
+        }
+    }
+
+    void dfs() {
+        for (GraphNode node: nodeList) {
+            if (!node.isVisited)
+                dfsVisit(node);
+        }
+    }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

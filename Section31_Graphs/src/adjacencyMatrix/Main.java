@@ -8,8 +8,8 @@ public class Main {
         nodeList.add(new GraphNode("A", 0));
         nodeList.add(new GraphNode("B", 1));
         nodeList.add(new GraphNode("C", 2));
-        nodeList.add(new GraphNode("D", 4));
-        nodeList.add(new GraphNode("E", 5));
+        nodeList.add(new GraphNode("D", 3));
+        nodeList.add(new GraphNode("E", 4 ));
 
         Graph g = new Graph(nodeList);
         g.addUndirectedEdge(0,1);
@@ -19,5 +19,10 @@ public class Main {
         g.addUndirectedEdge(2,3);
         g.addUndirectedEdge(3,4);
         System.out.println(g.toString());
+
+//        g.bfs();
+
+        System.out.println("");
+        g.dfs();
     }
 }
